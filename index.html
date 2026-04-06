@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Arena - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Settings Button -->
+    <button class="settings-btn" id="settingsBtn" aria-label="Settings">
+        <span class="settings-icon">⚙️</span>
+    </button>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h2>⚙️ Settings</h2>
+            <button class="close-btn" id="closeSettings">✕</button>
+        </div>
+        
+        <div class="settings-content">
+            <!-- Music Controls -->
+            <div class="settings-section">
+                <h3>🎵 Background Music</h3>
+                <div class="music-controls">
+                    <button class="music-btn" data-track="1">🎵 Track 1: Arcade Beat</button>
+                    <button class="music-btn" data-track="2">🎵 Track 2: Retro Wave</button>
+                    <button class="music-btn" data-track="3">🎵 Track 3: Cyber Pulse</button>
+                    <button class="music-btn stop-music" id="stopMusic">⏹️ Stop Music</button>
+                </div>
+                <div class="volume-control">
+                    <label for="volumeSlider">Volume:</label>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                    <span id="volumeValue">50%</span>
+                </div>
+                
+                <!-- Custom Music Upload -->
+                <div class="custom-music-section">
+                    <h4>🎧 Upload Your Music</h4>
+                    <p class="upload-hint">Play your own music or playlist!</p>
+                    <input type="file" id="customMusicUpload" accept="audio/*" multiple style="display: none;">
+                    <button class="upload-music-btn" id="uploadMusicBtn">
+                        📂 Choose Music Files
+                    </button>
+                    <div class="custom-playlist" id="customPlaylist"></div>
+                </div>
+            </div>
+
+            <!-- Theme Toggle -->
+            <div class="settings-section">
+                <h3>🎨 Theme</h3>
+                <div class="theme-toggle">
+                    <button class="theme-btn active" data-theme="dark">🌙 Dark Mode</button>
+                    <button class="theme-btn" data-theme="light">☀️ Light Mode</button>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="settings-section">
+                <h3>🔗 Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://twitter.com/yourusername" target="_blank" class="social-link">
+                        <span class="social-icon">𝕏</span> Twitter/X
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank" class="social-link">
+                        <span class="social-icon">🐙</span> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Request Game Form -->
+            <div class="settings-section">
+                <h3>🎮 Request a Game</h3>
+                <form class="request-form" id="gameRequestForm" action="https://formsubmit.co/momomalek0107@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Game Request from Game Arena!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse" value="Thanks for your game suggestion! We'll review it and consider adding it to Game Arena.">
+                    
+                    <input type="text" name="Game Name" id="gameNameInput" placeholder="Game name..." required>
+                    <textarea name="Game Description" id="gameDescInput" placeholder="Describe the game you'd like to see..." rows="3" required></textarea>
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                </form>
+                <div class="request-message" id="requestMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="bgMusic" loop></audio>
+
+    <header>
+        <h1>🎮 GAME ARENA 🎮</h1>
+        <p class="subtitle">Choose Your Game and Start Playing!</p>
+    </header>
+
+    <main class="home-container">
+        <!-- Game Categories -->
+        <div class="categories-section">
+            <h2 class="category-title">🎯 Classic Games</h2>
+            <div class="game-selection">
+                
+                <!-- Tic-Tac-Toe Card -->
+                <div class="game-selection-card">
+                    <div class="game-icon">❌⭕</div>
+                    <h2 class="game-selection-title">TIC-TAC-TOE</h2>
+                    <p class="game-description">
+                        Classic 3x3 grid game. Get three in a row to win! 
+                        Challenge a friend in this timeless strategy game.
+                    </p>
+                    <div class="game-features">
+                        <span class="feature-badge">2 Players</span>
+                        <span class="feature-badge">Quick Game</span>
+                        <span class="feature-badge">Strategy</span>
+                    </div>
+                    <a href="tic-tac-toe.html" class="play-button">
+                        <span>PLAY NOW</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+
+                <!-- Rock-Paper-Scissors Card -->
+                <div class="game-selection-card">
+                    <div class="game-icon">🪨📄✂️</div>
+                    <h2 class="game-selection-title">ROCK-PAPER-SCISSORS</h2>
+                    <p class="game-description">
+                        Test your luck against the computer! 
+                        Rock crushes scissors, scissors cuts paper, paper covers rock.
+                    </p>
+                    <div class="game-features">
+                        <span class="feature-badge">vs Computer</span>
+                        <span class="feature-badge">Instant Fun</span>
+                        <span class="feature-badge">Luck</span>
+                    </div>
+                    <a href="rock-paper-scissors.html" class="play-button">
+                        <span>PLAY NOW</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Try Your Luck Category -->
+        <div class="categories-section">
+            <h2 class="category-title">🍀 Try Your Luck</h2>
+            <div class="game-selection">
+                
+                <!-- Plinko Card -->
+                <div class="game-selection-card">
+                    <div class="game-icon">🎯</div>
+                    <h2 class="game-selection-title">PLINKO</h2>
+                    <p class="game-description">
+                        Choose a target box and drop the ball! Watch it bounce through pegs. 
+                        Will it land in your chosen box? Test your prediction skills!
+                    </p>
+                    <div class="game-features">
+                        <span class="feature-badge">Solo Play</span>
+                        <span class="feature-badge">Prediction</span>
+                        <span class="feature-badge">Addictive</span>
+                    </div>
+                    <a href="plinko.html" class="play-button">
+                        <span>PLAY NOW</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+
+                <!-- Mines Card -->
+                <div class="game-selection-card">
+                    <div class="game-icon">💣</div>
+                    <h2 class="game-selection-title">MINES</h2>
+                    <p class="game-description">
+                        Choose number of hidden mines and reveal all safe tiles! 
+                        One wrong move and it's game over. How far can you go?
+                    </p>
+                    <div class="game-features">
+                        <span class="feature-badge">Memory</span>
+                        <span class="feature-badge">Levels</span>
+                        <span class="feature-badge">Thrilling</span>
+                    </div>
+                    <a href="mines.html" class="play-button">
+                        <span>PLAY NOW</span>
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="info-section">
+            <div class="info-card">
+                <div class="info-icon">🏆</div>
+                <h3>Compete & Win</h3>
+                <p>Track your scores and become the ultimate champion</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">⚡</div>
+                <h3>Instant Play</h3>
+                <p>No downloads required, play directly in your browser</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">🎯</div>
+                <h3>Challenge Yourself</h3>
+                <p>Test your strategy and reflexes in classic games</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Game Arena | Built with ❤️ for gamers</p>
+    </footer>
+
+    <script src="settings.js"></script>
+</body>
+</html>

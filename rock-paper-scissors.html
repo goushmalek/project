@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors - Game Arena</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="game">
+    <!-- Settings Button -->
+    <button class="settings-btn" id="settingsBtn" aria-label="Settings">
+        <span class="settings-icon">⚙️</span>
+    </button>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h2>⚙️ Settings</h2>
+            <button class="close-btn" id="closeSettings">✕</button>
+        </div>
+        
+        <div class="settings-content">
+            <!-- Music Controls -->
+            <div class="settings-section">
+                <h3>🎵 Background Music</h3>
+                <div class="music-controls">
+                    <button class="music-btn" data-track="1">🎵 Track 1: Arcade Beat</button>
+                    <button class="music-btn" data-track="2">🎵 Track 2: Retro Wave</button>
+                    <button class="music-btn" data-track="3">🎵 Track 3: Cyber Pulse</button>
+                    <button class="music-btn stop-music" id="stopMusic">⏹️ Stop Music</button>
+</div>
+                <div class="volume-control">
+                    <label for="volumeSlider">Volume:</label>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                    <span id="volumeValue">50%</span>
+                </div>
+                
+                <!-- Custom Music Upload -->
+                <div class="custom-music-section">
+                    <h4>🎧 Upload Your Music</h4>
+                    <p class="upload-hint">Play your own music or playlist!</p>
+                    <input type="file" id="customMusicUpload" accept="audio/*" multiple style="display: none;">
+                    <button class="upload-music-btn" id="uploadMusicBtn">
+                        📂 Choose Music Files
+                    </button>
+                    <div class="custom-playlist" id="customPlaylist"></div>
+                </div>
+            </div>
+
+            <!-- Theme Toggle -->
+            <div class="settings-section">
+                <h3>🎨 Theme</h3>
+                <div class="theme-toggle">
+                    <button class="theme-btn active" data-theme="dark">🌙 Dark Mode</button>
+                    <button class="theme-btn" data-theme="light">☀️ Light Mode</button>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="settings-section">
+                <h3>🔗 Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://twitter.com/yourusername" target="_blank" class="social-link">
+                        <span class="social-icon">𝕏</span> Twitter/X
+                    </a>
+                    <a href="https://github.com/yourusername" target="_blank" class="social-link">
+                        <span class="social-icon">🐙</span> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Request Game Form -->
+            <div class="settings-section">
+                <h3>🎮 Request a Game</h3>
+                <form class="request-form" id="gameRequestForm" action="https://formsubmit.co/momomalek0107@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Game Request from Game Arena!">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse" value="Thanks for your game suggestion! We'll review it and consider adding it to Game Arena.">
+                    
+                    <input type="text" name="Game Name" id="gameNameInput" placeholder="Game name..." required>
+                    <textarea name="Game Description" id="gameDescInput" placeholder="Describe the game you'd like to see..." rows="3" required></textarea>
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                </form>
+                <div class="request-message" id="requestMessage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="bgMusic" loop></audio>
+
+    <header>
+        <a href="index.html" class="back-button">← Back to Home</a>
+        <h1>🪨📄✂️ ROCK-PAPER-SCISSORS</h1>
+    </header>
+
+    <main class="game-page-container">
+        <div class="game-card single-game">
+            <div class="status" id="rps-status">Make Your Choice!</div>
+            <div class="rps-choices">
+                <button class="choice-btn" data-choice="rock">🪨</button>
+                <button class="choice-btn" data-choice="paper">📄</button>
+                <button class="choice-btn" data-choice="scissors">✂️</button>
+            </div>
+            <div class="rps-result">
+                <div class="choices-display" id="rps-choices-display"></div>
+                <div class="result-display" id="rps-result"></div>
+            </div>
+            <div class="score">
+                <div class="score-item">
+                    <span class="score-label">You</span>
+                    <span class="score-value" id="rps-score-player">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Draws</span>
+                    <span class="score-value" id="rps-score-draw">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Computer</span>
+                    <span class="score-value" id="rps-score-computer">0</span>
+                </div>
+            </div>
+            <button id="rps-reset">Reset Scores</button>
+        </div>
+    </main>
+
+    <script src="settings.js"></script>
+    <script src="rock-paper-scissors.js"></script>
+</body>
+</html>

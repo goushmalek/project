@@ -1,0 +1,243 @@
+/* Plinko Prediction Game Styles */
+.plinko-game {
+    max-width: 700px !important;
+}
+
+.game-status {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--electric-blue);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    color: var(--neon-cyan);
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    font-weight: 700;
+}
+
+.game-status.success {
+    border-color: #00ff00;
+    color: #00ff00;
+    animation: pulse 1s infinite;
+}
+
+.game-status.fail {
+    border-color: #ff0000;
+    color: #ff0000;
+    animation: pulse 1s infinite;
+}
+
+#plinkoCanvas {
+    width: 100%;
+    height: 500px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--electric-blue);
+    border-radius: 15px;
+    margin: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.target-boxes {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.target-box {
+    flex: 1;
+    padding: 1.5rem 0.5rem;
+    background: rgba(77, 77, 255, 0.2);
+    border: 3px solid var(--electric-blue);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--neon-cyan);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.target-box::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(0, 255, 255, 0.2),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+}
+
+.target-box:hover::before {
+    transform: translateX(100%);
+}
+
+.target-box:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: var(--neon-cyan);
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.target-box.selected {
+    background: rgba(255, 215, 0, 0.3);
+    border-color: gold;
+    color: gold;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    animation: selectedPulse 1s infinite;
+}
+
+@keyframes selectedPulse {
+    0%, 100% {
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(255, 215, 0, 1);
+    }
+}
+
+.target-box.correct {
+    background: rgba(0, 255, 0, 0.3);
+    border-color: #00ff00;
+    color: #00ff00;
+    animation: correctHit 0.5s ease-out;
+}
+
+.target-box.wrong {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
+    color: #ff0000;
+    opacity: 0.6;
+}
+
+@keyframes correctHit {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 40px rgba(0, 255, 0, 1);
+    }
+}
+
+.drop-btn {
+    background: linear-gradient(135deg, var(--electric-blue), var(--neon-pink));
+    padding: 1rem 2rem !important;
+    font-size: 1.3rem !important;
+    margin: 2rem auto !important;
+    display: block;
+    min-width: 200px;
+}
+
+.drop-btn:disabled {
+    background: rgba(128, 128, 128, 0.3);
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Plinko Pegs and Ball */
+.peg {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.ball {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--neon-pink);
+    border-radius: 50%;
+    box-shadow: 0 0 15px var(--neon-pink);
+    animation: ballGlow 0.5s infinite alternate;
+    z-index: 10;
+}
+
+@keyframes ballGlow {
+    from {
+        box-shadow: 0 0 15px var(--neon-pink);
+    }
+    to {
+        box-shadow: 0 0 25px var(--neon-pink), 0 0 35px var(--neon-pink);
+    }
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--electric-blue);
+    border-radius: 10px;
+    min-width: 150px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--neon-yellow);
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: var(--neon-cyan);
+    font-weight: 900;
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.reset-btn {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--electric-blue);
+    color: var(--neon-cyan);
+    margin: 2rem auto 0 !important;
+    display: block;
+}
+
+.reset-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+    border-color: var(--neon-cyan);
+}
+
+@media (max-width: 768px) {
+    #plinkoCanvas {
+        height: 400px;
+    }
+
+    .target-boxes {
+        gap: 0.3rem;
+    }
+
+    .target-box {
+        font-size: 1.2rem;
+        padding: 1rem 0.3rem;
+    }
+}
